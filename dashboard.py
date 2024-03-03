@@ -5,7 +5,7 @@ import pandas as pd
 
 # Function to load data
 def load_data():
-    data = pd.read_csv('E-Commerce Public Dataset\main_data.csv')
+    data = pd.read_csv('E-Commerce Public Dataset/main_data.csv')
     return data
 
 # Function to create regression plot
@@ -72,6 +72,12 @@ if page == 'Welcome':
     st.write("""
     Explore additional pages through the side navigation bar for more insightful data details.
     """)
+    st.header('About Dataset')
+    st.write("""
+    This dataset is a Brazilian ecommerce public dataset of orders made at Olist Store. The dataset has information of 100k orders from 2016 to 2018 made at multiple marketplaces in Brazil. Its features allows viewing an order from multiple dimensions: from order status, price, payment and freight performance to customer location, product attributes and reviews written by customers. There is also a geolocation dataset that relates Brazilian zip codes to lat/lng coordinates.
+
+    This is real commercial data, it has been anonymised, and references to the companies and partners in the review text have been replaced with the names of Game of Thrones great houses.
+    """)
 elif page == 'Impact of Delivery Time':
     st.header('The Impact of Delivery Time to Review Score')
     
@@ -82,6 +88,9 @@ elif page == 'Impact of Delivery Time':
     if plot_type == 'Regression Plot':
         st.subheader('Regression Plot')
         create_regression_plot(all_df)
+        st.write(''' 
+                 Test
+                 ''')
     elif plot_type == 'Box Plot':
         st.subheader('Box Plot')
         create_box_plot(all_df)
