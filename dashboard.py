@@ -78,6 +78,47 @@ if page == 'Welcome':
 
     This is real commercial data, it has been anonymised, and references to the companies and partners in the review text have been replaced with the names of Game of Thrones great houses.
     """)
+    st.subheader('Tables')
+    st.write("""
+    There are 9 tables:
+    """)
+    st.markdown('- customers')
+    st.write('''
+             contains: ('customer_id', 'customer_unique_id', 'customer_zip_code_prefix', 'customer_city', 'customer_state')
+             ''')
+    st.markdown('- geolocation')
+    st.write('''
+             contains: ('geolocation_zip_code_prefix', 'geolocation_lat', 'geolocation_lng', 'geolocation_city', 'geolocation_state')
+             ''')
+    st.markdown('- orders')
+    st.write('''
+             contains: ('order_id', 'customer_id', 'order_status', 'order_purchase_timestamp', 'order_approved_at', 'order_delivered_customer_date', 'order_estimated_delivery_date')
+             ''')
+    st.markdown('- order_items')
+    st.write('''
+             contains: ('order_id', 'order_item_id', 'product_id', 'seller_id', 'shipping_limit_date', 'price', 'freight_value')
+             ''')
+    st.markdown('- order_payments')
+    st.write('''
+             contains: ('order_id', 'payment_sequential', 'payment_type', 'payment_installments', 'payment_value')
+             ''')
+    st.markdown('- order_reviews')
+    st.write('''
+             contains: ('review_id', 'order_id', 'review_score', 'review_comment_title', 'review_comment_message', 'review_creation_date', 'review_answer_timestamp')
+             ''')
+    st.markdown('- products')
+    st.write('''
+             contains: ('product_id', 'product_category_name', 'product_name_lenght', 'product_description_lenght', 'product_photos_qty', 'product_weight_g', 'product_length_cm', 'product_height_cm', 'product_width_cm')
+             ''')
+    st.markdown('- product_category_name')
+    st.write('''
+             contains: ('product_category_name', 'product_category_name_english')
+             ''')
+    st.markdown('- sellers')
+    st.write('''
+             contains: ('seller_id', 'seller_zip_code_prefix', 'seller_city', 'seller_state')
+             ''')
+    
 elif page == 'Impact of Delivery Time':
     st.header('The Impact of Delivery Time to Review Score')
     
@@ -88,12 +129,45 @@ elif page == 'Impact of Delivery Time':
     if plot_type == 'Regression Plot':
         st.subheader('Regression Plot')
         create_regression_plot(all_df)
-        st.write(''' 
-                 Test
-                 ''')
+        st.markdown('''
+                    - The regression plot illustrates a discernible pattern between delivery time and review score.
+                    ''')
+        st.markdown('''
+                    - The regression line suggests a negative correlation, indicating that higher review scores tend to be associated with shorter delivery times.
+                    ''')
+        st.markdown('''
+                    - Specifically, the trend indicates that as delivery time decreases, the likelihood of receiving a higher review score increases.
+                    ''')
+        st.write('Conclusion :')
+        st.markdown('''
+                    - Instances with lower delivery times are more likely to result in favorable review scores, while higher delivery times may correlate with lower review scores.
+                    ''')
+        st.markdown('''
+                    - Businesses might consider optimizing delivery processes to improve overall customer satisfaction, as indicated by the observed correlation between shorter delivery times and higher review scores.
+                    ''')
+        
     elif plot_type == 'Box Plot':
         st.subheader('Box Plot')
         create_box_plot(all_df)
+        st.markdown('''
+                    - The box plot provides insights into the distribution of delivery times across different review scores.
+                    ''')
+        st.markdown('''
+                    - For a review score of 5, the box plot indicates a narrow distribution of delivery times with a low median. This suggests a consistent and shorter delivery time for customers providing the highest review score.
+                    ''')
+        st.markdown('''
+                    - The narrow range and low median for review score 5 imply a higher level of consistency and efficiency in delivery times, contributing to the positive reviews.
+                    ''')
+        st.markdown('''
+                    - Conversely, for lower review scores such as 1, the box plot shows a more varied distribution with a wider range and a higher median. This implies a greater variability in delivery times, potentially leading to longer delivery periods for customers who gave low scores.
+                    ''')
+        st.write('Conclusion :')
+        st.markdown('''
+                    - The higher review scores (e.g., 5) are associated with a more consistent and shorter delivery time. In contrast, lower review scores (e.g., 1) exhibit a wider range and longer delivery times, suggesting a connection between delivery efficiency and perceived customer satisfaction.
+                    ''')
+        st.markdown('''
+                    - The observed patterns suggest a strong connection between customer satisfaction, as indicated by review scores, and the consistency and efficiency of delivery times. This insight can guide businesses in understanding the impact of delivery time on customer perceptions and optimizing their services accordingly.
+                    ''')
 
 elif page == 'Order Status Percentage':
     st.header('The Percentage of Successful Deliveries to Customers')
@@ -105,6 +179,38 @@ elif page == 'Order Status Percentage':
     if plot_type_order_status == 'Pie Chart':
         st.subheader('Pie Chart: Order Status Percentage')
         create_pie_chart(all_df)
+        st.markdown('''
+                    - The pie chart reveals a significant success rate in delivering orders, with a percentage of 97%.
+                    ''')
+        st.markdown('''
+                    - This high success rate signifies an efficient and successful product delivery process.
+                    ''')
+        st.markdown('''
+                    - The notable success rate suggests a well-organized and effective system, contributing to positive customer experiences.
+                    ''')
+        st.write('Conclusion :')
+        st.markdown('''
+                    - The data implies that the majority of orders are successfully delivered, indicating optimal management of the delivery process.
+                    ''')
     elif plot_type_order_status == 'Bar Chart':
         st.subheader('Bar Chart: Top 10 Order Status')
         create_bar_chart(all_df)
+        st.markdown('''
+                    - The bar chart provides a visual representation of the order status distribution, highlighting the top 10 order statuses.
+                    ''')
+        st.markdown('''
+                    - "Delivered" emerges as the most prevalent status, indicating a high volume of successfully completed orders.
+                    ''')
+        st.markdown('''
+                    - Following "Delivered," the status "Shipped" captures a substantial share of the order count, underlining the successful progression of shipped orders.
+                    ''')
+        st.markdown('''
+                    - The presence of "Canceled" status in the top order statuses suggests a noteworthy number of cancellations, potentially indicating areas for improvement in order processing or customer communication.
+                    ''')
+        st.write('Conclusion :')
+        st.markdown('''
+                    - The distribution of order statuses, with "Delivered" standing out as the most prevalent status, followed by "Shipped" and "Canceled." This insight provides a quick overview of operational performance.
+                    ''')
+        st.markdown('''
+                    - The high percentage of "Delivered" status may signify a high level of customer satisfaction, as orders are reaching customers successfully, contributing positively to the overall customer experience.
+                    ''')
